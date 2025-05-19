@@ -1,0 +1,56 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFrameworks>net8.0;net9.0</TargetFrameworks>
+        <LangVersion>default</LangVersion>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <Nullable>enable</Nullable>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <PackageId>Pastel.Enhanced</PackageId>
+        <Authors>Denis Tulupov</Authors>
+        <PackageTags>console colour color colors colours colourful colorful colourize colorize ansi NO_COLOR</PackageTags>
+        <Copyright>Copyright © 2025</Copyright>
+        <PackageProjectUrl>https://github.com/viruseg/Pastel.Enhanced</PackageProjectUrl>
+        <Description>A tiny utility class that makes colorizing console output a breeze. The Enhanced version provides a set of methods for primitive types that allow you to output them to the console using color and bypassing the toString() method call.</Description>
+        <Version>1.0.2</Version>
+        <AssemblyVersion>1.0.2</AssemblyVersion>
+        <PackageVersion>1.0.2</PackageVersion>
+        <PackageReleaseNotes>
+            1.0.0: Drop .NET Framework support; Add Extension Methods for Primitive Types
+        </PackageReleaseNotes>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <PackageLicenseFile>LICENSE</PackageLicenseFile>
+        <RepositoryUrl>https://github.com/viruseg/Pastel.Enhanced</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+        <IncludeContentInPack>true</IncludeContentInPack>
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+        <DocumentationFile>bin\Release\Pastel.xml</DocumentationFile>
+    </PropertyGroup>
+
+    <ItemGroup Condition=" '$(TargetFramework)' == 'net462' ">
+        <PackageReference Include="System.Runtime.InteropServices.RuntimeInformation" Version="4.3.0" />
+        <PackageReference Include="System.Memory" Version="4.6.0" />
+    </ItemGroup>
+
+    <ItemGroup Condition="$(DefineConstants.Contains('NET8_0_OR_GREATER'))">
+        <AssemblyAttribute Include="System.Runtime.CompilerServices.DisableRuntimeMarshalling" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleToAttribute">
+            <_Parameter1>Pastel.Tests</_Parameter1>
+        </AssemblyAttribute>
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Include="../LICENSE" Pack="true" Visible="true" PackagePath="" />
+        <None Include="../README.md" Pack="true" Visible="true" PackagePath="" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Pastel" Version="6.0.1" />
+    </ItemGroup>
+
+</Project>
