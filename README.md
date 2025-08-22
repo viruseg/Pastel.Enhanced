@@ -8,7 +8,7 @@
 Give your console app a nicer look by adding some color to the output it produces.
 This is achieved by wrapping strings of the output in [ANSI escape sequences](https://en.wikipedia.org/wiki/ANSI_escape_code) that instruct the terminal to color the string based on the interpreted code. Tested on both Windows (requires at least Windows 10, v1511 [November Update]) and Linux.
 
-Pastel.Enhanced is a fork of the [Pastel library](https://github.com/silkfire/Pastel), which extends the functionality of the original library and provides a set of methods for primitive types that allow them to be output to the console by coloring them in the specified color, bypassing the toString() method call.
+Pastel.Enhanced is a fork of the [Pastel library](https://github.com/silkfire/Pastel), which extends the functionality of the original library and provides a set of methods for primitive types that allow them to be output to the console by coloring them in the specified color, bypassing the ToString() method call.
 
 ## Introduction
 
