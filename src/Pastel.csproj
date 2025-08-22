@@ -4,16 +4,30 @@
     <TargetFrameworks>net462;net8.0;net9.0</TargetFrameworks>
     <LangVersion>latest</LangVersion>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <Authors>Gabriel Bider</Authors>
+    <Authors>Gabriel Bider, Denis Tulupov</Authors>
     <PackageTags>console colour color colors colours colourful colorful colourize colorize ansi NO_COLOR</PackageTags>
     <Copyright>Copyright © 2025</Copyright>
-    <PackageProjectUrl>https://github.com/silkfire/Pastel</PackageProjectUrl>
-    <Description>A tiny utility class that makes colorizing console output a breeze.</Description>
+    <PackageProjectUrl>https://github.com/viruseg/Pastel.Enhanced</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/viruseg/Pastel.Enhanced</RepositoryUrl>
+    <Description>A tiny utility class that makes colorizing console output a breeze. The Enhanced version provides a set of methods for primitive types that allow you to output them to the console using color and bypassing the toString() method call.</Description>
     <Version>7.0.0</Version>
     <AssemblyVersion>7.0.0.0</AssemblyVersion>
     <PackageVersion>7.0.0</PackageVersion>
     <PackageReleaseNotes>v7.0.0 Use terminal theme-defined ANSI base colors as default for the ConsoleColor overload</PackageReleaseNotes>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <AssemblyName>Pastel</AssemblyName>
+    <PackageId>Pastel.Enhanced</PackageId>
+    <Authors>Gabriel Bider, Denis Tulupov</Authors>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <RepositoryType>git</RepositoryType>
+    <IncludeContentInPack>true</IncludeContentInPack>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="../LICENSE" Pack="true" Visible="true" PackagePath="" />
+    <None Include="../README.md" Pack="true" Visible="true" PackagePath="" />
+  </ItemGroup>
 
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <DocumentationFile>bin\Release\Pastel.xml</DocumentationFile>
@@ -49,7 +63,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="build\Pastel.targets" Pack="true" PackagePath="build\" />
+    <None Include="build\Pastel.Enhanced.targets" Pack="true" PackagePath="build\" />
   </ItemGroup>
 
 </Project>
