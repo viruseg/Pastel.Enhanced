@@ -1,12 +1,14 @@
-# Pastel
+# Pastel.Enhanced
 
-![logo](https://raw.githubusercontent.com/silkfire/Pastel/master/img/logo.png)
+![logo](https://raw.githubusercontent.com/viruseg/Pastel.Enhanced/master/img/logo.enhanced.png)
 
-[![NuGet](https://img.shields.io/nuget/dt/Pastel.svg)](https://www.nuget.org/packages/Pastel)
-[![NuGet](https://img.shields.io/nuget/v/Pastel.svg)](https://www.nuget.org/packages/Pastel)
+[![NuGet](https://img.shields.io/nuget/dt/Pastel.Enhanced.svg)](https://www.nuget.org/packages/Pastel.Enhanced)
+[![NuGet](https://img.shields.io/nuget/v/Pastel.Enhanced.svg)](https://www.nuget.org/packages/Pastel.Enhanced)
 
-Give your console app a nicer look by adding some color to the output it produces. 
+Give your console app a nicer look by adding some color to the output it produces.
 This is achieved by wrapping strings of the output in [ANSI escape sequences](https://en.wikipedia.org/wiki/ANSI_escape_code) that instruct the terminal to color the string based on the interpreted code. Tested on both Windows (requires at least Windows 10, v1511 [November Update]) and Linux.
+
+Pastel.Enhanced is a fork of the [Pastel library](https://github.com/silkfire/Pastel), which extends the functionality of the original library and provides a set of methods for primitive types that allow them to be output to the console by coloring them in the specified color, bypassing the toString() method call.
 
 ## Introduction
 
@@ -25,10 +27,22 @@ The basic syntax is very simple. Use the `Pastel()` method on the string you wan
 
 Console.WriteLine($"Press {"ENTER".Pastel(Color.FromArgb(165, 229, 250))} to continue");
 ```
-![Example 1](https://raw.githubusercontent.com/silkfire/Pastel/master/img/example1.png)
+![Example 1](https://raw.githubusercontent.com/viruseg/Pastel.Enhanced/master/img/example1.png)
+
+The color can be applied to Primitive Types without first converting them to a string. Primitive Types: int, uint, long, ulong, short, ushort, byte, sbyte, float, double, decimal, bool, char.
+```cs
+int intValue = 123;
+intValue.Pastel(ConsoleColor.Cyan);
+
+bool boolValue = true;
+boolValue.Pastel(ConsoleColor.Cyan);
+
+float floatValue = 123.45f;
+floatValue.Pastel(ConsoleColor.Cyan, "C0", CultureInfo.InvariantCulture);
+```
 
 You can either use a `System.Drawing.Color` object, a `System.ConsoleColor` enum or a hexadecimal string value.  
-Both upper and lower case hex codes are supported and the leading number sign (#) is optional. 
+Both upper and lower case hex codes are supported and the leading number sign (#) is optional.
 
 
 ```cs
@@ -48,13 +62,13 @@ var spectrum = new (string color, string letter)[]
 
 Console.WriteLine(string.Join("", spectrum.Select(s => s.letter.Pastel(s.color))));
 ```
-![Example 2](https://raw.githubusercontent.com/silkfire/Pastel/master/img/example2.png)  
+![Example 2](https://raw.githubusercontent.com/viruseg/Pastel.Enhanced/master/img/example2.png)
 
-![Example 3](https://raw.githubusercontent.com/silkfire/Pastel/master/img/example3.png)
+![Example 3](https://raw.githubusercontent.com/viruseg/Pastel.Enhanced/master/img/example3.png)
 
 Using a `Color`/`ConsoleColor` argument pairs very well with ReSharper as the extension automatically underlines the argument list and colors it accordingly:
 
-![ReSharper color object underlining](https://raw.githubusercontent.com/silkfire/Pastel/master/img/resharper-coloring.png)
+![ReSharper color object underlining](https://raw.githubusercontent.com/viruseg/Pastel.Enhanced/master/img/resharper-coloring.png)
 
 
 ## Background colors
@@ -66,7 +80,7 @@ Both foreground and background colors can be combined by chaining the methods:
 "Colorize me".Pastel(Color.Black).PastelBg("FFD000");
 ```
 
-![Example 4](https://raw.githubusercontent.com/silkfire/Pastel/master/img/example4.png)
+![Example 4](https://raw.githubusercontent.com/viruseg/Pastel.Enhanced/master/img/example4.png)
 
 ## Disabling / enabling color output
 
@@ -80,12 +94,3 @@ If you'd like to override this check and force colors in CI/CD environments, you
 ### NO_COLOR
 
 Pastel will also honor systems where console color output has explicitly been requested to be turned off. See more information about this initiative at https://no-color.org.
-
-## Support
-
-Has this library helped you or proven to be useful in your project?
-
-* Leave a star!
-* Consider buying me a coffee with the link below! ⭐
-
-<a href="https://www.buymeacoffee.com/silkfire" target="_blank" style="margin-left: 10px;"><img src="https://img.buymeacoffee.com/button-api/?textBuy me a coffee&amp;emoji=☕&amp;slug=silkfire&amp;button_colour=FFDD00&amp;font_colour=000000&amp;font_family=Cookie&amp;outline_colour=000000&amp;coffee_colour=ffffff"></a>
