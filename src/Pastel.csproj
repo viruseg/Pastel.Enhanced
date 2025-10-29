@@ -10,9 +10,9 @@
     <PackageProjectUrl>https://github.com/viruseg/Pastel.Enhanced</PackageProjectUrl>
     <RepositoryUrl>https://github.com/viruseg/Pastel.Enhanced</RepositoryUrl>
     <Description>A tiny utility class that makes colorizing console output a breeze. The Enhanced version provides a set of methods for primitive types that allow you to output them to the console using color and bypassing the toString() method call.</Description>
-    <Version>7.0.0</Version>
-    <AssemblyVersion>7.0.0.0</AssemblyVersion>
-    <PackageVersion>7.0.1</PackageVersion>
+    <Version>7.0.1.1</Version>
+    <AssemblyVersion>7.0.1.1</AssemblyVersion>
+    <PackageVersion>7.0.1.1</PackageVersion>
     <PackageReleaseNotes>v7.0.0 Use terminal theme-defined ANSI base colors as default for the ConsoleColor overload</PackageReleaseNotes>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <AssemblyName>Pastel</AssemblyName>
