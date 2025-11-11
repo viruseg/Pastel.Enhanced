@@ -25,7 +25,18 @@
         private const uint ENABLE_PROCESSED_OUTPUT            = 0x0001;
         private const uint ENABLE_VIRTUAL_TERMINAL_PROCESSING = 0x0004;
 
-#if NET8_0_OR_GREATER
+#if NET10_0_OR_GREATER
+        [DllImport(Kernel32DllName, EntryPoint = "GetConsoleMode")]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        private static extern bool GetConsoleMode(nint hConsoleHandle, out uint lpMode);
+
+        [DllImport(Kernel32DllName, EntryPoint = "SetConsoleMode")]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        private static extern bool SetConsoleMode(nint hConsoleHandle, uint dwMode);
+
+        [DllImport(Kernel32DllName, EntryPoint = "GetStdHandle")]
+        private static extern nint GetStdHandle(int nStdHandle);
+#elif NET8_0_OR_GREATER
         [LibraryImport(Kernel32DllName, EntryPoint = "GetConsoleMode")]
         [return: MarshalAs(UnmanagedType.Bool)]
         private static partial bool GetConsoleMode(nint hConsoleHandle, out uint lpMode);
@@ -761,7 +772,7 @@
 
 #if NET8_0_OR_GREATER
             string pastelString;
-            
+
             unsafe
             {
                 fixed (char* inputPtr = input)
@@ -777,10 +788,10 @@
                                                  static (buf, ctx) =>
                                                  {
                                                      int i = 0;
-                                                 
+
                                                      buf[i++] = '\x1b';
                                                      buf[i++] = '[';
-            
+
                                                      ctx.ConsoleColorValue.CopyTo(buf.Slice(i));
                                                      i += ctx.ConsoleColorValue.Length;
 
@@ -828,10 +839,10 @@
             var bufSpan = buf.AsSpan();
 
             int i = 0;
-                                                 
+
             bufSpan[i++] = '\x1b';
             bufSpan[i++] = '[';
-            
+
             consoleColorValue.CopyTo(bufSpan.Slice(i));
             i += consoleColorValue.Length;
 
